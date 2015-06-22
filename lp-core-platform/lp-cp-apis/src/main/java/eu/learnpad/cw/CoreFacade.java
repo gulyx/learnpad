@@ -19,6 +19,8 @@
  */
 package eu.learnpad.cw;
 
-public interface CoreFacade {
+import eu.learnpad.cw.rest.ResourceNotification;
+
+public interface CoreFacade extends ResourceNotification {
 
 }
