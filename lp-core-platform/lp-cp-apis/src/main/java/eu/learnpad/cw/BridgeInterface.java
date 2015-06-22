@@ -19,8 +19,9 @@
  */
 package eu.learnpad.cw;
 
+import eu.learnpad.cw.rest.GetResource;
 import eu.learnpad.cw.rest.ModelSetImported;
 
-public interface BridgeInterface extends ModelSetImported {
+public interface BridgeInterface extends GetResource, ModelSetImported {
 
 }
