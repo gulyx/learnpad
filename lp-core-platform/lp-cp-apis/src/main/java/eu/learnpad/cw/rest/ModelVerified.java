@@ -17,11 +17,26 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package eu.learnpad.cw;
+package eu.learnpad.cw.rest;
 
-import eu.learnpad.cw.rest.CommentNotification;
-import eu.learnpad.cw.rest.ResourceNotification;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 
-public interface CoreFacade extends CommentNotification, ResourceNotification {
+import eu.learnpad.exception.LpRestException;
 
+@Path("/learnpad/cw/modelverification/{modelsetid}")
+public interface ModelVerified {
+	/**
+	 * @param modelSetId
+	 *            is the ID of the model set that is concerned
+	 * @param result
+	 *            contain the feedback about the verification for the specified
+	 *            model
+	 * @throws LpRestException
+	 */
+	@PUT
+	void contentVerified(@PathParam("modelsetid") String modelSetId,
+			@QueryParam("result") String result) throws LpRestException;
 }
