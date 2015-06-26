@@ -17,50 +17,67 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package eu.learnpad.core.impl.cw;
+package eu.learnpad.core.impl.or;
 
 import org.xwiki.component.annotation.Component;
 import org.xwiki.rest.XWikiRestComponent;
 
 import eu.learnpad.exception.impl.LpRestExceptionImpl;
-import eu.learnpad.cw.BridgeInterface;
-import eu.learnpad.core.rest.RestResource;
+import eu.learnpad.or.BridgeInterface;
 
 @Component
-public class XwikiBridgeInterfaceRestResource extends RestResource implements
-		XWikiRestComponent, BridgeInterface {
+public class XwikiBridgeInterface implements XWikiRestComponent, BridgeInterface{
 
 	@Override
-	public byte[] getComments(String modelSetId, String artifactId)
+	public void putModelSet(String modelSetId, String type)
 			throws LpRestExceptionImpl {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override
-	public byte[] getResource(String modelSetId, String resourceId,
+	public void sendResourceNotification(String modelSetId, String resourceId,
 			String artifactIds, String action) throws LpRestExceptionImpl {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public byte[] askRecommendation(String modelSetId, String artifactId,
+			String userId, String type) throws LpRestExceptionImpl {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void putModel(String modelSetId, String type) throws LpRestExceptionImpl {
+	public byte[] simulationNotification(String modelSetId, String modelId,
+			String action, String simulationId) throws LpRestExceptionImpl {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
-	public void contentVerified(String modelSetId, String artifactId,
-			String resourceId, String result) throws LpRestExceptionImpl {
+	public void addExecutionState(String artifactName,
+			String artifactDescription, String artifactType, String modelType,
+			String freeDescription, String existingArtifactId,
+			String existingArtifactStructureDepth) throws LpRestExceptionImpl {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void modelVerified(String modelSetId, String result)
+	public void addExecutionState(String modelSetId, String executionId,
+			String userId, String threadId, String pageId, String artifactId)
 			throws LpRestExceptionImpl {
 		// TODO Auto-generated method stub
+		
 	}
+
+	@Override
+	public byte[] listExecutionStates(String userId) throws LpRestExceptionImpl {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
