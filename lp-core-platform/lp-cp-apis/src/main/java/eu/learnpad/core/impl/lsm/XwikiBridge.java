@@ -17,13 +17,13 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package eu.learnpad.core.impl.qm;
+package eu.learnpad.core.impl.lsm;
 
 import org.xwiki.component.annotation.Component;
 import org.xwiki.rest.XWikiRestComponent;
 
-import eu.learnpad.qm.Bridge;
-import eu.learnpad.qm.CoreFacade;
+import eu.learnpad.lsm.Bridge;
+import eu.learnpad.lsm.CoreFacade;
 
 @Component
 public abstract class XwikiBridge extends Bridge implements XWikiRestComponent{
