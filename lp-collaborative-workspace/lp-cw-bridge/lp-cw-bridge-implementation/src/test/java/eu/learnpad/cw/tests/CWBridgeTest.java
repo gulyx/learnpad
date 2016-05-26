@@ -1,5 +1,6 @@
 package eu.learnpad.cw.tests;
 
+import java.net.URI;
 import java.security.SecureRandom;
 
 import org.junit.Ignore;
@@ -7,14 +8,23 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.xwiki.component.manager.ComponentLookupException;
 import org.xwiki.component.phase.InitializationException;
+import org.xwiki.contrib.websocket.WebSocket;
+import org.xwiki.contrib.websocket.WebSocketHandler;
 import org.xwiki.test.mockito.MockitoComponentMockingRule;
 
 import eu.learnpad.cw.internal.CWXwikiBridge;
+<<<<<<< Updated upstream
+=======
+import eu.learnpad.cw.internal.RecommendationWebsocketServer;
+import eu.learnpad.cw.tests.websockets.SimpleWebsocketClient;
+import eu.learnpad.cw.tests.websockets.handlers.SimpleMessageHandler;
+import eu.learnpad.cw.tests.websockets.handlers.SimpleMessageHandlerImpl;
+>>>>>>> Stashed changes
 import eu.learnpad.exception.LpRestException;
 import eu.learnpad.or.rest.data.Recommendations;
 
 /**
- *
+ * 
  * @author gulyx
  */
 public class CWBridgeTest {
@@ -30,6 +40,13 @@ public class CWBridgeTest {
 	// public final MockitoComponentMockingRule<CWXwikiBridge> mocker = new
 	// MockitoComponentMockingRule(CWXwikiBridge.class,org.xwiki.rest.XWikiRestComponent.class);
 
+<<<<<<< Updated upstream
+=======
+	@Rule
+	public final MockitoComponentMockingRule<WebSocketHandler> mockerRecWebSocketServer = new MockitoComponentMockingRule(
+			RecommendationWebsocketServer.class);
+
+>>>>>>> Stashed changes
 	private CWXwikiBridge bridge;
 	private SecureRandom random;
 
@@ -38,9 +55,49 @@ public class CWBridgeTest {
 	}
 
 	@Test
+<<<<<<< Updated upstream
+=======
+	public void testRecommendationWebsocketServer()
+			throws ComponentLookupException {
+		int maxTentatives = this.random.nextInt(4) + 1;
+
+		bridge = mocker.getComponentUnderTest();
+
+		try {
+			WebSocketHandler recServer = mockerRecWebSocketServer.getComponentUnderTest();
+
+			 // open websocket
+			SimpleWebsocketClient wsClient = new SimpleWebsocketClient(new URI(
+					"ws://localhost:8093/xwiki/recommendation"));
+
+			// add listener
+			wsClient.addMessageHandler(new SimpleMessageHandlerImpl(Thread.currentThread()));
+
+			Recommendations rec = new Recommendations();
+			String modelSetId = "mod." + String.valueOf(this.random.nextInt());
+			String userId = "dummyUser";
+
+			// All the recs belongs to a the same simulation session
+			String simulationid = String.valueOf(this.random.nextLong());
+
+			for (int i = 0; i < maxTentatives; i++) {
+				bridge.notifyRecommendations(modelSetId, simulationid, userId, rec);
+			}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// WebSocket ws = new
+	}
+
+	@Test
+>>>>>>> Stashed changes
 	@Ignore
 	public void testInsertNotifiedRecommandations()
-			throws ComponentLookupException, InitializationException, LpRestException {
+			throws ComponentLookupException, InitializationException,
+			LpRestException {
 		bridge = mocker.getComponentUnderTest();
 
 		int maxTentatives = this.random.nextInt(4) + 1;
@@ -82,7 +139,8 @@ public class CWBridgeTest {
 	@Test
 	@Ignore
 	public void testBannedSimIdInNotifiedReccomandations()
-			throws ComponentLookupException, InitializationException, LpRestException {
+			throws ComponentLookupException, InitializationException,
+			LpRestException {
 		bridge = mocker.getComponentUnderTest();
 
 		int maxTentatives = this.random.nextInt(4) + 1;
