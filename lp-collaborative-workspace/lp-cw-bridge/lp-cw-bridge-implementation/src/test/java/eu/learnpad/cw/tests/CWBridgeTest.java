@@ -13,13 +13,11 @@ import org.xwiki.contrib.websocket.WebSocketHandler;
 import org.xwiki.test.mockito.MockitoComponentMockingRule;
 
 import eu.learnpad.cw.internal.CWXwikiBridge;
-<<<<<<< Updated upstream
-=======
 import eu.learnpad.cw.internal.RecommendationWebsocketServer;
 import eu.learnpad.cw.tests.websockets.SimpleWebsocketClient;
 import eu.learnpad.cw.tests.websockets.handlers.SimpleMessageHandler;
 import eu.learnpad.cw.tests.websockets.handlers.SimpleMessageHandlerImpl;
->>>>>>> Stashed changes
+import eu.learnpad.cw.internal.RecommendationWebsocketServer;
 import eu.learnpad.exception.LpRestException;
 import eu.learnpad.or.rest.data.Recommendations;
 
@@ -40,13 +38,10 @@ public class CWBridgeTest {
 	// public final MockitoComponentMockingRule<CWXwikiBridge> mocker = new
 	// MockitoComponentMockingRule(CWXwikiBridge.class,org.xwiki.rest.XWikiRestComponent.class);
 
-<<<<<<< Updated upstream
-=======
 	@Rule
 	public final MockitoComponentMockingRule<WebSocketHandler> mockerRecWebSocketServer = new MockitoComponentMockingRule(
 			RecommendationWebsocketServer.class);
 
->>>>>>> Stashed changes
 	private CWXwikiBridge bridge;
 	private SecureRandom random;
 
@@ -55,8 +50,6 @@ public class CWBridgeTest {
 	}
 
 	@Test
-<<<<<<< Updated upstream
-=======
 	public void testRecommendationWebsocketServer()
 			throws ComponentLookupException {
 		int maxTentatives = this.random.nextInt(4) + 1;
@@ -93,7 +86,6 @@ public class CWBridgeTest {
 	}
 
 	@Test
->>>>>>> Stashed changes
 	@Ignore
 	public void testInsertNotifiedRecommandations()
 			throws ComponentLookupException, InitializationException,
